@@ -8,6 +8,9 @@
 #library {
     border: 4px solid maroon;
     margin: 4px;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 }
 
 .book-card {
