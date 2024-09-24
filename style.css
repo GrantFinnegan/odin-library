@@ -25,6 +25,9 @@ h1 {
 
 .book-card {
     border: 4px solid darkgrey;
+    display: grid;
+    grid-template-columns: 1fr 30px;
+    grid-template-rows: 1fr 4rem;
 }
 
 .book-title {
