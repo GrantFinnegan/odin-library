@@ -42,3 +42,12 @@ h1 {
     list-style: none;
 }
 
+.book-author > .label {
+    font-weight: bold;
+    color: maroon;
+}
+
+.book-pages > .label {
+    font-weight: bold;
+}
+
