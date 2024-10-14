@@ -1,9 +1,9 @@
-const myLibrary = [];
+let myLibrary = [];
 
-const titleInput = document.querySelector('#title');
-const authorInput = document.querySelector('#author');
-const pagesInput = document.querySelector('#pages');
-const isReadCheckBox = document.querySelector('#is-read');
+let titleInput = document.querySelector('#title');
+let authorInput = document.querySelector('#author');
+let pagesInput = document.querySelector('#pages');
+let isReadCheckBox = document.querySelector('#is-read');
 
 function Book(title, author, pages, isRead){
     this.title = title;
@@ -14,10 +14,17 @@ function Book(title, author, pages, isRead){
 
 function addBookToLibrary(){
     //retrieve book info from user
+    let title = titleInput.value;
+    let author = authorInput.value;
+    let pages = pagesInput.value;
+    let isRead = isReadCheckBox.value;
 
-    //construct book object
+    //Create book object
+    let newBook = new Book(title, author, pages, isRead);
+    myLibrary.push(newBook)
 
-    //display book card on page
+    //create book card
+    displayBook(newBook);
 }
 
 function displayBook(newBook){
