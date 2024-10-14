@@ -29,6 +29,12 @@ function addBookToLibrary(){
     displayBook(newBook);
 }
 
+function deleteBook(bookCardNode, title) {
+    myLibrary = myLibrary.filter((value) => value.title != title);
+
+    bookCardNode.remove();
+}
+
 function displayBook(newBook){
     let libraryDisplay = document.querySelector('#library');
     
@@ -48,6 +54,8 @@ function displayBook(newBook){
     deleteButton.setAttribute('type', 'button')
     deleteButton.textContent = 'X';
     newBookCard.appendChild(deleteButton);
+    //delete button functionality
+    deleteButton.addEventListener("click", () => deleteBook(newBookCard, newBook.title));
 
     //info list
     let bookInfoList = document.createElement('ul');
