@@ -23,7 +23,7 @@ function addBookToLibrary(){
     let newBook = new Book(title, author, pages, isRead);
     myLibrary.push(newBook)
 
-    //create book card
+    //update display
     displayBook(newBook);
 }
 
@@ -60,8 +60,6 @@ function displayBook(newBook){
     let authorLabelSpan = document.createElement('span');
     authorLabelSpan.className = 'label';
     authorLabelSpan.textContent = 'Author:'
-    //insert label before text node of list item
-    //childNodes property is used over children property because it includes the text node
     authorListItem.insertBefore(authorLabelSpan, authorListItem.childNodes[0]);
 
     //----Pages list item
@@ -73,8 +71,6 @@ function displayBook(newBook){
     let pagesLabelSpan = document.createElement('span');
     pagesLabelSpan.className = 'label';
     pagesLabelSpan.textContent = 'Pages:';
-    //insert label before text node
-    //childNodes property is used over children property because childNodes includes text nodes
     pagesListItem.insertBefore(pagesLabelSpan, pagesListItem.childNodes[0]);
 
     //----bookIsRead list item
