@@ -5,6 +5,8 @@ let authorInput = document.querySelector('#author');
 let pagesInput = document.querySelector('#pages');
 let isReadCheckBox = document.querySelector('#is-read');
 
+document.querySelector('.add-book-button').addEventListener("click", addBookToLibrary);
+
 function Book(title, author, pages, isRead){
     this.title = title;
     this.author = author;
