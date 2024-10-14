@@ -15,7 +15,7 @@ function addBookToLibrary(){
     //display book card on page
 }
 
-function displayBook(){
+function displayBook(newBook){
     let libraryDisplay = document.querySelector('#library');
     
     let newBookCard = document.createElement('div');
@@ -25,7 +25,7 @@ function displayBook(){
     //Title header
     let titleHeader = document.createElement('h2');
     titleHeader.className = 'book-title';
-    titleHeader.textContent = "Lord of the Rings"; //placeholder
+    titleHeader.textContent = newBook.title;
     newBookCard.appendChild(titleHeader);
 
     //delete button
@@ -42,7 +42,7 @@ function displayBook(){
     //----Author list item
     let authorListItem = document.createElement('li');
     authorListItem.className = 'book-author';
-    authorListItem.textContent = ' TEST AUTHOR'; //placeholder
+    authorListItem.textContent = newBook.author;
     bookInfoList.appendChild(authorListItem);
     //--------Author label
     let authorLabelSpan = document.createElement('span');
@@ -55,7 +55,7 @@ function displayBook(){
     //----Pages list item
     let pagesListItem = document.createElement('li');
     pagesListItem.className = 'book-pages';
-    pagesListItem.textContent = ' 999'; //placeholder
+    pagesListItem.textContent = newBook.pages;
     bookInfoList.appendChild(pagesListItem);
     //--------Pages label
     let pagesLabelSpan = document.createElement('span');
@@ -68,7 +68,7 @@ function displayBook(){
     //----bookIsRead list item
     let isReadListItem = document.createElement('li');
     isReadListItem.className = 'book-is-read';
-    isReadListItem.textContent = 'Completed'; //placeholder
+    isReadListItem.textContent = newBook.isRead ? 'Completed' : "Unread";
     bookInfoList.appendChild(isReadListItem);
 
 
