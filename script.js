@@ -1,5 +1,10 @@
 const myLibrary = [];
 
+const titleInput = document.querySelector('#title');
+const authorInput = document.querySelector('#author');
+const pagesInput = document.querySelector('#pages');
+const isReadCheckBox = document.querySelector('#is-read');
+
 function Book(title, author, pages, isRead){
     this.title = title;
     this.author = author;
