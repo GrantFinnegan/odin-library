@@ -7,6 +7,8 @@ let isReadCheckBox = document.querySelector('#is-read');
 
 document.querySelector('.add-book-button').addEventListener("click", addBookToLibrary);
 
+autoPopulateLibrary();
+
 function Book(title, author, pages, isRead){
     this.title = title;
     this.author = author;
@@ -97,4 +99,19 @@ function displayBook(newBook){
     editButton.textContent = 'E';
     newBookCard.appendChild(editButton);
 
+}
+
+
+function autoPopulateLibrary() {
+    let baseLibrary = [];
+    baseLibrary.push(new Book('The Lord of the Rings', 'Jolkien Rolkien Rolkien Tolkien', 120, true));
+    baseLibrary.push(new Book('The Hobbit', 'JRR Tolkien', 340, false));
+    baseLibrary.push(new Book('This is how you lose the time war', 'Amal El-Mohtar and Max Gladstone', 238, false));
+    baseLibrary.push(new Book('The Grapes of Wrath', 'John Steinbeck', 1043, true));
+    baseLibrary.push(new Book('Bible, the', 'Paul et al.', 413, true));
+
+    for (let book of baseLibrary){
+        myLibrary.push(book);
+        displayBook(book);
+    }
 }
