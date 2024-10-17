@@ -30,8 +30,7 @@ function addBookToLibrary(){
 }
 
 function deleteBook(bookCardNode, title) {
-    myLibrary = myLibrary.filter((value) => value.title != title);
-
+    myLibrary = myLibrary.filter((value, index) => index != bookCardNode.getAttribute('data'));
     bookCardNode.remove();
 }
 
@@ -40,6 +39,7 @@ function displayBook(newBook){
     
     let newBookCard = document.createElement('div');
     newBookCard.className = 'book-card';
+    newBookCard.setAttribute("data", '' + myLibrary.length)
     libraryDisplay.appendChild(newBookCard);
 
     //Title header
