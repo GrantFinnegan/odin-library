@@ -36,6 +36,10 @@ function deleteBook(bookCardNode, title) {
     bookCardNode.remove();
 }
 
+function toggleIsRead(bookCardNode) {
+    myLibrary[bookCardNode.getAttribute('data')].isRead = ! (myLibrary[bookCardNode.getAttribute('data')].isRead);
+}
+
 function displayBook(newBook){
     let libraryDisplay = document.querySelector('#library');
     
@@ -88,13 +92,14 @@ function displayBook(newBook){
     //----bookIsRead list item
     let isReadListItem = document.createElement('li');
     isReadListItem.className = 'book-is-read';
-    isReadListItem.textContent = newBook.isRead ? 'Completed' : "Unread";
+    isReadListItem.textContent = 'Completed:';
     //--------bookIsReadCheckbox creation
     let isReadCheckBox = document.createElement('input');
     isReadCheckBox.setAttribute('type', 'checkbox');
     isReadCheckBox.className = 'is-read-checkbox';
     isReadCheckBox.checked = newBook.isRead;
-    isReadListItem.insertBefore(isReadCheckBox, isReadListItem.childNodes[0]);
+    isReadCheckBox.addEventListener('click', () => toggleIsRead(newBookCard));
+    isReadListItem.appendChild(isReadCheckBox);
     bookInfoList.appendChild(isReadListItem);
 
 
