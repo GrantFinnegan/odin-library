@@ -41,7 +41,7 @@ function displayBook(newBook){
     
     let newBookCard = document.createElement('div');
     newBookCard.className = 'book-card';
-    newBookCard.setAttribute("data", '' + myLibrary.length)
+    newBookCard.setAttribute("data", '' + (myLibrary.length - 1))
     libraryDisplay.appendChild(newBookCard);
 
     //Title header
