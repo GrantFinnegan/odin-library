@@ -21,7 +21,7 @@ function addBookToLibrary(){
     let title = titleInput.value;
     let author = authorInput.value;
     let pages = pagesInput.value;
-    let isRead = isReadCheckBox.value;
+    let isRead = isReadCheckBox.checked;
 
     //Create book object
     let newBook = new Book(title, author, pages, isRead);
