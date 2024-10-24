@@ -89,6 +89,7 @@ function displayBook(newBook){
     let isReadListItem = document.createElement('li');
     isReadListItem.className = 'book-is-read';
     isReadListItem.textContent = newBook.isRead ? 'Completed' : "Unread";
+    //--------bookIsReadCheckbox creation
     let isReadCheckBox = document.createElement('input');
     isReadCheckBox.setAttribute('type', 'checkbox');
     isReadCheckBox.className = 'is-read-checkbox';
