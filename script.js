@@ -1,5 +1,6 @@
 let myLibrary = [];
 
+//set up form for adding new books
 let titleInput = document.querySelector('#title');
 let authorInput = document.querySelector('#author');
 let pagesInput = document.querySelector('#pages');
@@ -7,6 +8,9 @@ let isReadCheckBox = document.querySelector('#is-read');
 
 document.querySelector('.add-book-button').addEventListener("click", addBookToLibrary);
 
+//load baseline library
+//      this would be done with a database, in an actualy project
+//      that's a later lesson, so it's just static 
 autoPopulateLibrary();
 
 function Book(title, author, pages, isRead){
