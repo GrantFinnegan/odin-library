@@ -114,17 +114,6 @@ function displayBook(newBook){
     let pagesListItem = createLabeledListItem(newBook.pages, 'Pages: ', 'book-pages');
     bookInfoList.appendChild(pagesListItem);
 
-    // //----bookIsRead list item
-    // let isReadListItem = document.createElement('li');
-    // isReadListItem.className = 'book-is-read';
-    // isReadListItem.textContent = 'Completed:';
-    // //--------bookIsReadCheckbox creation
-    // let isReadCheckBox = document.createElement('input');
-    // isReadCheckBox.setAttribute('type', 'checkbox');
-    // isReadCheckBox.className = 'is-read-checkbox';
-    // isReadCheckBox.checked = newBook.isRead;
-    // isReadCheckBox.addEventListener('click', () => toggleIsRead(newBookCard));
-    // isReadListItem.appendChild(isReadCheckBox);
     let isReadListItem = createIsReadListItem(newBook.isRead, newBookCard);
     bookInfoList.appendChild(isReadListItem);
 
