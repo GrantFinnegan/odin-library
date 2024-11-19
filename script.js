@@ -44,6 +44,23 @@ function toggleIsRead(bookCardNode) {
     myLibrary[bookCardNode.getAttribute('data')].isRead = ! (myLibrary[bookCardNode.getAttribute('data')].isRead);
 }
 
+//card creation functions
+
+function createLabeledListItem (textContent, labelText, className){
+    let labeledListItem = document.createElement('li');
+    labeledListItem.className = className;
+    labeledListItem.textContent = textContent;
+
+    let labelSpan = document.createElement('span');
+    labelSpan.className = 'label';
+    labelSpan.textContent = labelText;
+
+    //Insert label span before text node of labeledListItem
+    labeledListItem.insertBefore(labelSpan, labeledListItem.childNodes[0]);
+
+    return labeledListItem;
+}
+
 function displayBook(newBook){
     let libraryDisplay = document.querySelector('#library');
     
@@ -71,27 +88,12 @@ function displayBook(newBook){
     let bookInfoList = document.createElement('ul');
     bookInfoList.className = 'book-info';
     newBookCard.appendChild(bookInfoList);
-    //----Author list item
-    let authorListItem = document.createElement('li');
-    authorListItem.className = 'book-author';
-    authorListItem.textContent = newBook.author;
-    bookInfoList.appendChild(authorListItem);
-    //--------Author label
-    let authorLabelSpan = document.createElement('span');
-    authorLabelSpan.className = 'label';
-    authorLabelSpan.textContent = 'Author:'
-    authorListItem.insertBefore(authorLabelSpan, authorListItem.childNodes[0]);
 
-    //----Pages list item
-    let pagesListItem = document.createElement('li');
-    pagesListItem.className = 'book-pages';
-    pagesListItem.textContent = newBook.pages;
+    let authorListItem = createLabeledListItem(newBook.author, 'Author: ', 'book-author');
+    bookInfoList.appendChild(authorListItem);
+
+    let pagesListItem = createLabeledListItem(newBook.pages, 'Pages: ', 'book-pages');
     bookInfoList.appendChild(pagesListItem);
-    //--------Pages label
-    let pagesLabelSpan = document.createElement('span');
-    pagesLabelSpan.className = 'label';
-    pagesLabelSpan.textContent = 'Pages:';
-    pagesListItem.insertBefore(pagesLabelSpan, pagesListItem.childNodes[0]);
 
     //----bookIsRead list item
     let isReadListItem = document.createElement('li');
