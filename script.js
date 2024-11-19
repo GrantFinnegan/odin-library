@@ -61,6 +61,25 @@ function createLabeledListItem (textContent, labelText, className){
     return labeledListItem;
 }
 
+function createIsReadListItem (isRead, bookCard){
+    let listItem = document.createElement('li');
+
+    listItem.className = 'book-is-read';
+    listItem.textContent = 'Completed:'
+
+    //Checkbox creation
+    let checkbox = document.createElement('input');
+    checkbox.setAttribute('type', 'checkbox');
+    checkbox.className = 'is-read-checkbox';
+    checkbox.checked = isRead;
+
+    checkbox.addEventListener('click', () => toggleIsRead(bookCard));
+
+    listItem.appendChild(checkbox);
+
+    return listItem;
+}
+
 function displayBook(newBook){
     let libraryDisplay = document.querySelector('#library');
     
@@ -95,17 +114,18 @@ function displayBook(newBook){
     let pagesListItem = createLabeledListItem(newBook.pages, 'Pages: ', 'book-pages');
     bookInfoList.appendChild(pagesListItem);
 
-    //----bookIsRead list item
-    let isReadListItem = document.createElement('li');
-    isReadListItem.className = 'book-is-read';
-    isReadListItem.textContent = 'Completed:';
-    //--------bookIsReadCheckbox creation
-    let isReadCheckBox = document.createElement('input');
-    isReadCheckBox.setAttribute('type', 'checkbox');
-    isReadCheckBox.className = 'is-read-checkbox';
-    isReadCheckBox.checked = newBook.isRead;
-    isReadCheckBox.addEventListener('click', () => toggleIsRead(newBookCard));
-    isReadListItem.appendChild(isReadCheckBox);
+    // //----bookIsRead list item
+    // let isReadListItem = document.createElement('li');
+    // isReadListItem.className = 'book-is-read';
+    // isReadListItem.textContent = 'Completed:';
+    // //--------bookIsReadCheckbox creation
+    // let isReadCheckBox = document.createElement('input');
+    // isReadCheckBox.setAttribute('type', 'checkbox');
+    // isReadCheckBox.className = 'is-read-checkbox';
+    // isReadCheckBox.checked = newBook.isRead;
+    // isReadCheckBox.addEventListener('click', () => toggleIsRead(newBookCard));
+    // isReadListItem.appendChild(isReadCheckBox);
+    let isReadListItem = createIsReadListItem(newBook.isRead, newBookCard);
     bookInfoList.appendChild(isReadListItem);
 
 
