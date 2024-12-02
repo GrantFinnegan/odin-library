@@ -13,11 +13,62 @@ document.querySelector('.add-book-button').addEventListener("click", addBookToLi
 //      that's a later lesson, so it's just static 
 autoPopulateLibrary();
 
-function Book(title, author, pages, isRead){
+function Book(title, author, pages, isRead, id){
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.isRead = isRead;
+    this.id = id;
+}
+
+Book.prototype.genBookCard = function () {
+    //initiate card <div>
+    let bookCard = document.createElement('div');
+    bookCard.className = 'book-card';
+    bookCard.setAttribute("data", '' + this.id)
+
+
+    //Title header
+    let titleHeader = document.createElement('h2');
+    titleHeader.className = 'book-title';
+    titleHeader.textContent = this.title;
+
+    bookCard.appendChild(titleHeader);
+
+
+    //delete button
+    let deleteButton = document.createElement('button');
+    deleteButton.className = "delete-button";
+    deleteButton.setAttribute('type', 'button')
+    deleteButton.textContent = 'X';
+
+    // deleteButton.addEventListener(); needs re-implementation
+
+    bookCard.appendChild(deleteButton);
+
+
+    //info list
+    let bookInfoList = document.createElement('ul');
+    bookInfoList.className = 'book-info';
+    bookCard.appendChild(bookInfoList);
+
+    let authorListItem = createLabeledListItem(this.author, 'Author: ', 'book-author');
+    bookInfoList.appendChild(authorListItem);
+
+    let pagesListItem = createLabeledListItem(this.pages, 'Pages: ', 'book-pages');
+    bookInfoList.appendChild(pagesListItem);
+
+    let isReadListItem = createIsReadListItem(this.isRead, bookCard);
+    bookInfoList.appendChild(isReadListItem);
+
+    //edit button
+    let editButton = document.createElement('button');
+    editButton.className = "edit-button";
+    editButton.setAttribute('type', 'button')
+    editButton.textContent = 'E';
+    bookCard.appendChild(editButton);
+
+    return bookCard;
 }
 
 function addBookToLibrary(){
