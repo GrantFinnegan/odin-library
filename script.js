@@ -8,11 +8,6 @@ let isReadCheckBox = document.querySelector('#is-read');
 
 document.querySelector('.add-book-button').addEventListener("click", addBookToLibrary);
 
-//load baseline library
-//      this would be done with a database, in an actualy project
-//      that's a later lesson, so it's just static 
-autoPopulateLibrary();
-
 function Book(title, author, pages, isRead, id){
     this.title = title;
     this.author = author;
@@ -21,7 +16,7 @@ function Book(title, author, pages, isRead, id){
     this.id = id;
 }
 
-Book.prototype.genBookCard = function () {
+Book.prototype.genBookCard = function() {
     //initiate card <div>
     let bookCard = document.createElement('div');
     bookCard.className = 'book-card';
@@ -69,7 +64,17 @@ Book.prototype.genBookCard = function () {
     bookCard.appendChild(editButton);
 
     return bookCard;
-}
+};
+
+
+
+//load baseline library
+//      this would be done with a database, in an actualy project
+//      that's a later lesson, so it's just static 
+autoPopulateLibrary();
+
+
+
 
 function addBookToLibrary(){
     //retrieve book info from user
@@ -131,51 +136,9 @@ function createIsReadListItem (isRead, bookCard){
     return listItem;
 }
 
-function displayBook(newBook){
+function displayBook(book){
     let libraryDisplay = document.querySelector('#library');
-    
-    let newBookCard = document.createElement('div');
-    newBookCard.className = 'book-card';
-    newBookCard.setAttribute("data", '' + (myLibrary.length - 1))
-    libraryDisplay.appendChild(newBookCard);
-
-    //Title header
-    let titleHeader = document.createElement('h2');
-    titleHeader.className = 'book-title';
-    titleHeader.textContent = newBook.title;
-    newBookCard.appendChild(titleHeader);
-
-    //delete button
-    let deleteButton = document.createElement('button');
-    deleteButton.className = "delete-button";
-    deleteButton.setAttribute('type', 'button')
-    deleteButton.textContent = 'X';
-    newBookCard.appendChild(deleteButton);
-    //delete button functionality
-    deleteButton.addEventListener("click", () => deleteBook(newBookCard, newBook.title));
-
-    //info list
-    let bookInfoList = document.createElement('ul');
-    bookInfoList.className = 'book-info';
-    newBookCard.appendChild(bookInfoList);
-
-    let authorListItem = createLabeledListItem(newBook.author, 'Author: ', 'book-author');
-    bookInfoList.appendChild(authorListItem);
-
-    let pagesListItem = createLabeledListItem(newBook.pages, 'Pages: ', 'book-pages');
-    bookInfoList.appendChild(pagesListItem);
-
-    let isReadListItem = createIsReadListItem(newBook.isRead, newBookCard);
-    bookInfoList.appendChild(isReadListItem);
-
-
-    //edit button
-    let editButton = document.createElement('button');
-    editButton.className = "edit-button";
-    editButton.setAttribute('type', 'button')
-    editButton.textContent = 'E';
-    newBookCard.appendChild(editButton);
-
+    libraryDisplay.appendChild(book.genBookCard());
 }
 
 
